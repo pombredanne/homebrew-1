@@ -1,4 +1,5 @@
 alabaster==0.7.6
+apipkg==1.4
 argh==0.26.1
 autopep8==1.2.1
 Babel==2.1.1
@@ -8,6 +9,7 @@ coverage==4.0.3
 cryptography==1.1.1
 docutils==0.12
 enum34==1.1.1
+execnet==1.4.1
 flake8==2.5.0
 idna==2.0
 importmagic==0.1.3
@@ -24,6 +26,8 @@ pyasn1==0.1.9
 pycparser==2.14
 pyflakes==1.0.0
 Pygments==2.0.2
+pytest==2.8.3
+pytest-xdist==1.13.1
 pytz==2015.7
 PyYAML==3.11
 rope==0.10.3

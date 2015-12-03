@@ -8,23 +8,16 @@ test_homebrew
 Tests for `homebrew` module.
 """
 
-import unittest
-
-from homebrew import homebrew
+from homebrew import brew
 
 
-class TestHomebrew(unittest.TestCase):
+def test_homebrew(monkeypatch):
+    def mockreturn(brew):
+        brew.installed = []
+        brew.uses = {}
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
-    def test_000_something(self):
-        pass
-
-
-if __name__ == '__main__':
-    import sys
-    sys.exit(unittest.main())
+    monkeypatch.setattr(brew, '__init__', mockreturn)
+    hb = brew()
+    assert hb.packages_not_needed_by_other == {}
+    assert hb.packages_needed_by_other == {}
+    assert hb.package_dependencies == {}
