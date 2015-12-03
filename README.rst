@@ -12,6 +12,9 @@ homebrew
         :target: https://readthedocs.org/projects/homebrew/?badge=latest
         :alt: Documentation Status
 
+.. image:: https://coveralls.io/repos/igroen/homebrew/badge.svg?branch=master&service=github
+        :target: https://coveralls.io/github/igroen/homebrew?branch=master
+
 
 Homebrew wrapper
 
