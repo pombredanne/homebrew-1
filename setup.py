@@ -22,6 +22,7 @@ requirements = [
 test_requirements = [
     'pytest',
     'pytest-xdist',
+    'pytest-capturelog',
 ]
 
 
