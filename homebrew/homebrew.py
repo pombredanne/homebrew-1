@@ -27,15 +27,15 @@ class HomeBrew(object):
 
     @property
     def packages_not_needed_by_other(self):
-        return {
-            key: value for (key, value) in self.uses.items() if not value
-        }
+        return dict(
+            (key, value) for key, value in self.uses.items() if not value
+        )
 
     @property
     def packages_needed_by_other(self):
-        return {
-            key: value for (key, value) in self.uses.items() if value
-        }
+        return dict(
+            (key, value) for key, value in self.uses.items() if value
+        )
 
     @property
     def package_dependencies(self):
