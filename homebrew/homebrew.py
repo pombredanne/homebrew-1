@@ -14,7 +14,7 @@ class HomeBrew(object):
 
     def get_installed(self):
         result = subprocess.check_output(['brew', 'list'])
-        installed = result.decode(encoding='utf-8').split()
+        installed = result.split()
         return installed
 
     def get_uses(self):
@@ -22,7 +22,7 @@ class HomeBrew(object):
         for package in self.installed:
             uses[package] = subprocess.check_output(
                 ['brew', 'uses', '--installed', package]
-            ).decode(encoding='utf-8').split()
+            ).split()
         return uses
 
     @property
