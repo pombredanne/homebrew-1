@@ -16,8 +16,6 @@ install:
   - pip install -U tox --use-mirrors
   - pip install -U coveralls --use-mirrors
   - pip install -U flake8 --use-mirrors
-  - pip install -U pytest --use-mirrors
-  - pip install -U pytest-capturelog --use-mirrors
 
 before_script:
   - flake8 homebrew -v

@@ -28,7 +28,7 @@ def test_homebrew(monkeypatch, caplog):
         u'blub': [u'emacs'],
         u'boe': [u'emacs']
     }
-    assert hb.package_dependencies == {u'emacs': [u'boe', u'blub']}
+    assert 'boe' and 'blub' in hb.package_dependencies.get('emacs')
     hb.log_info()
     log_text = caplog.text()
     assert 'blub, boe' in log_text
