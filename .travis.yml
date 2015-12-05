@@ -11,13 +11,14 @@ env:
   - TOXENV=py26
   - TOXENV=pypy
 
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+# command to install dependencies, e.g. pip install -r requirements.txt
 install:
-  - pip install -U tox --use-mirrors
-  - pip install -U coveralls --use-mirrors
-  - pip install -U flake8 --use-mirrors
-  - pip install -U pytest --use-mirrors
-  - pip install -U pytest-capturelog --use-mirrors
+  - pip install -U tox
+  - pip install -U coveralls
+  - pip install -U flake8
+  - pip install -U pytest
+  - pip install -U pytest-xdist
+  - pip install -U pytest-capturelog
 
 before_script:
   - flake8 homebrew -v
