@@ -20,3 +20,9 @@ History
 
 * Add codecov to travis build
 * Add codecov badge to README.rst
+
+
+0.0.4 (2015-12-06)
+------------------
+
+* update documentation
