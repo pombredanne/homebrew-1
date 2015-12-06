@@ -8,8 +8,8 @@ homebrew
 .. image:: https://img.shields.io/travis/igroen/homebrew.svg
         :target: https://travis-ci.org/igroen/homebrew
 
-.. image:: https://readthedocs.org/projects/homebrew/badge/?version=latest
-        :target: https://readthedocs.org/projects/homebrew/?badge=latest
+.. image:: https://readthedocs.org/projects/homebrew-wrapper/badge/?version=latest
+        :target: https://readthedocs.org/projects/homebrew-wrapper/?badge=latest
         :alt: Documentation Status
 
 .. image:: https://coveralls.io/repos/igroen/homebrew/badge.svg?branch=master&service=github
@@ -19,7 +19,7 @@ homebrew
 Homebrew wrapper
 
 * Free software: ISC license
-* Documentation: https://homebrew.readthedocs.org.
+* Documentation: https://homebrew-wrapper.readthedocs.org.
 
 Features
 --------
