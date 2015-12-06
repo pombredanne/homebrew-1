@@ -26,7 +26,7 @@ Homebrew wrapper
 Features
 --------
 
-* TODO
+* Get overview of homebrew package dependencies
 
 Credits
 ---------
