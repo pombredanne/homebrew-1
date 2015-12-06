@@ -15,6 +15,8 @@ homebrew
 .. image:: https://coveralls.io/repos/igroen/homebrew/badge.svg?branch=master&service=github
         :target: https://coveralls.io/github/igroen/homebrew?branch=master
 
+.. image:: https://codecov.io/github/igroen/homebrew/coverage.svg?branch=master
+        :target: https://codecov.io/github/igroen/homebrew?branch=master
 
 Homebrew wrapper
 
