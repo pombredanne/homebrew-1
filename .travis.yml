@@ -4,6 +4,8 @@ after_success:
 - codecov
 before_script:
 - flake8 homebrew -v
+before_install:
+- pip install codecov
 after_success:
 - codecov
 deploy:
