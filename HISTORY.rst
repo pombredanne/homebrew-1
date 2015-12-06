@@ -13,3 +13,10 @@ History
 ------------------
 
 * Fix links to readthedocs
+
+
+0.0.3 (2015-12-06)
+------------------
+
+* Add codecov to travis build
+* Add codecov badge to README.rst
