@@ -18,6 +18,10 @@ homebrew
 .. image:: https://codecov.io/github/igroen/homebrew/coverage.svg?branch=master
         :target: https://codecov.io/github/igroen/homebrew?branch=master
 
+.. image:: https://requires.io/github/igroen/homebrew/requirements.svg?tag=v0.0.4
+        :target: https://requires.io/github/igroen/homebrew/requirements/?tag=v0.0.4
+        :alt: Requirements Status
+
 Homebrew wrapper
 
 * Free software: ISC license
