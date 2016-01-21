@@ -26,3 +26,9 @@ History
 ------------------
 
 * update documentation
+
+
+0.0.5 (2016-01-21)
+------------------
+
+* Update packages
