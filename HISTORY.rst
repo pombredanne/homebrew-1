@@ -38,3 +38,9 @@ History
 ------------------
 
 * Fix Requires.io. badge
+
+
+0.0.7 (2016-06-19)
+------------------
+
+* Upgrade packages
