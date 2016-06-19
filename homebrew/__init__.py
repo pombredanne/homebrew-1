@@ -5,6 +5,6 @@ from .homebrew import HomeBrew
 
 __author__ = 'Iwan in \'t Groen'
 __email__ = 'iwanintgroen@gmail.com'
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 
 brew = HomeBrew
