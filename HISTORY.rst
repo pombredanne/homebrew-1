@@ -54,3 +54,8 @@ History
 ------------------
 
 * Upgrade packages
+
+0.0.10 (2016-11-27)
+------------------
+
+* Use asyncio for getting uses

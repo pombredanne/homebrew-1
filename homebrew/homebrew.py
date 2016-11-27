@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
-
+import asyncio
 import subprocess
 
 from .logger import log
@@ -10,20 +9,27 @@ class HomeBrew(object):
 
     def __init__(self):
         self.installed = self.get_installed()
-        self.uses = self.get_uses()
+        self.uses = {}
+
+        loop = asyncio.get_event_loop()
+        tasks = [asyncio.ensure_future(self.get_uses(package))
+                 for package in self.installed]
+        loop.run_until_complete(asyncio.wait(tasks))
+        loop.close()
 
     def get_installed(self):
         result = subprocess.check_output(['brew', 'list'])
         installed = result.split()
-        return installed
+        return [r.decode('utf-8') for r in installed]
 
-    def get_uses(self):
-        uses = {}
-        for package in self.installed:
-            uses[package] = subprocess.check_output(
-                ['brew', 'uses', '--installed', package]
-            ).split()
-        return uses
+    async def get_uses(self, package):
+        uses = await asyncio.create_subprocess_exec(
+            *['brew', 'uses', '--installed', package],
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.STDOUT
+        )
+        stdout, _ = await uses.communicate()
+        self.uses[package] = stdout.decode('utf-8').split()
 
     @property
     def packages_not_needed_by_other(self):
