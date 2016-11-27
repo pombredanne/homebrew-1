@@ -9,20 +9,22 @@ class HomeBrew(object):
 
     def __init__(self):
         self.installed = self.get_installed()
-        self.uses = {}
-
-        loop = asyncio.get_event_loop()
-        tasks = [asyncio.ensure_future(self.get_uses(package))
-                 for package in self.installed]
-        loop.run_until_complete(asyncio.wait(tasks))
-        loop.close()
+        self.get_uses()
 
     def get_installed(self):
         result = subprocess.check_output(['brew', 'list'])
         installed = result.split()
         return [r.decode('utf-8') for r in installed]
 
-    async def get_uses(self, package):
+    def get_uses(self):
+        self.uses = {}
+        loop = asyncio.get_event_loop()
+        tasks = [asyncio.ensure_future(self.get_uses_for_package(package))
+                 for package in self.installed]
+        loop.run_until_complete(asyncio.wait(tasks))
+        loop.close()
+
+    async def get_uses_for_package(self, package):
         uses = await asyncio.create_subprocess_exec(
             *['brew', 'uses', '--installed', package],
             stdout=asyncio.subprocess.PIPE,
