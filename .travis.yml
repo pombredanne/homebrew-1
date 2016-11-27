@@ -19,7 +19,6 @@ deploy:
   user: Iwan.in.t.Groen
 env:
 - TOXENV=py35
-- TOXENV=pypy
 install:
 - pip install -U tox
 - pip install -U coveralls
