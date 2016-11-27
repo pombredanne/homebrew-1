@@ -59,3 +59,8 @@ History
 -------------------
 
 * Use asyncio for getting uses
+
+0.0.11 (2016-11-27)
+-------------------
+
+* Fix Travis CI configuration
