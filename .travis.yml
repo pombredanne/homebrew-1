@@ -6,7 +6,7 @@ after_success:
 - codecov
 deploy:
   true:
-    condition: $TOXENV == py27
+    condition: $TOXENV == py35
     repo: igroen/homebrew
     tags: true
   distributions: sdist bdist_wheel
@@ -16,9 +16,6 @@ deploy:
   user: Iwan.in.t.Groen
 env:
 - TOXENV=py35
-- TOXENV=py34
-- TOXENV=py33
-- TOXENV=py27
 - TOXENV=pypy
 install:
 - pip install -U tox
