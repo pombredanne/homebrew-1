@@ -18,7 +18,8 @@ class HomeBrew(object):
 
     def get_uses(self):
         self.uses = {}
-        loop = asyncio.get_event_loop()
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
         tasks = [asyncio.ensure_future(self.get_uses_for_package(package))
                  for package in self.installed]
         loop.run_until_complete(asyncio.wait(tasks))
