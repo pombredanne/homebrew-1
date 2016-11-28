@@ -64,3 +64,8 @@ History
 -------------------
 
 * Fix Travis CI configuration
+
+0.0.12 (2016-11-28)
+-------------------
+
+* Create new event loops
