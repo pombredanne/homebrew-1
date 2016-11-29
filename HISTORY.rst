@@ -69,3 +69,8 @@ History
 -------------------
 
 * Create new event loops
+
+0.0.13 (2016-11-29)
+-------------------
+
+* Use entry_point instead of scripts in setup.py
