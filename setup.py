@@ -68,12 +68,14 @@ setup(
         'License :: OSI Approved :: ISC License (ISCL)',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5'
+        'Programming Language :: Python :: 3.5',
     ],
     test_suite='tests',
     tests_require=test_requirements,
     cmdclass={'test': PyTest},
-    scripts=[
-        'scripts/hb.py'
-    ],
+    entry_points={
+        'console_scripts': [
+            'hb=homebrew.command_line:main',
+        ]
+    },
 )
