@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 import asyncio
 import subprocess
+from collections import defaultdict
 
 from .logger import log
 
 
 class HomeBrew(object):
 
-    def __init__(self):
+    def __init__(self, event_loop=asyncio.get_event_loop()):
+        self.loop = event_loop
         self.installed = self.get_installed()
         self.get_uses()
 
@@ -18,12 +20,9 @@ class HomeBrew(object):
 
     def get_uses(self):
         self.uses = {}
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
         tasks = [asyncio.ensure_future(self.get_uses_for_package(package))
                  for package in self.installed]
-        loop.run_until_complete(asyncio.wait(tasks))
-        loop.close()
+        self.loop.run_until_complete(asyncio.wait(tasks))
 
     async def get_uses_for_package(self, package):
         uses = await asyncio.create_subprocess_exec(
@@ -48,14 +47,14 @@ class HomeBrew(object):
 
     @property
     def package_dependencies(self):
-        dependencies = {}
+        dependencies = defaultdict(list)
         for package, needed_by in self.packages_needed_by_other.items():
             for needed in needed_by:
-                if not dependencies.get(needed):
-                    dependencies[needed] = [package]
-                else:
-                    dependencies[needed].append(package)
-        return dependencies
+                dependencies[needed].append(package)
+        return {
+            needed: sorted(packages)
+            for needed, packages in dependencies.items()
+        }
 
     def log_info(self):
         log(self.installed, self.packages_not_needed_by_other,
