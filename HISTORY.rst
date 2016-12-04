@@ -74,3 +74,8 @@ History
 -------------------
 
 * Use entry_point instead of scripts in setup.py
+
+0.0.14 (2016-12-04)
+-------------------
+
+* Parse eventloop
