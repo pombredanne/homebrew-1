@@ -6,7 +6,7 @@ from collections import defaultdict
 from .logger import log
 
 
-class HomeBrew(object):
+class HomeBrew:
 
     def __init__(self, event_loop=asyncio.get_event_loop()):
         self.loop = event_loop
