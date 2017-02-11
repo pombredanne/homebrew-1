@@ -79,3 +79,8 @@ History
 -------------------
 
 * Parse eventloop
+
+0.0.15 (2017-02-11)
+-------------------
+
+* Add --version command line argument
