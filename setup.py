@@ -20,7 +20,7 @@ requirements = [
 ]
 
 test_requirements = [
-    'pytest==3.0.4',
+    'pytest==3.0.6',
     'pytest-xdist==1.15.0',
     'pytest-capturelog==0.7',
 ]
@@ -47,7 +47,7 @@ class PyTest(TestCommand):
 
 setup(
     name='homebrew',
-    version='0.0.14',
+    version='0.0.15',
     description="Homebrew wrapper",
     long_description=readme + '\n\n' + history,
     author="Iwan in 't Groen",
