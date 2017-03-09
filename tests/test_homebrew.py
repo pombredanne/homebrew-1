@@ -6,7 +6,7 @@ from homebrew import homebrew
 
 
 @pytest.mark.skip
-def test_homebrew(monkeypatch, caplog):
+def test_homebrew(monkeypatch):
     """TODO: Write tests"""
     homebrew.HomeBrew()
 

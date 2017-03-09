@@ -22,7 +22,6 @@ requirements = [
 test_requirements = [
     'pytest==3.0.6',
     'pytest-xdist==1.15.0',
-    'pytest-capturelog==0.7',
 ]
 
 
