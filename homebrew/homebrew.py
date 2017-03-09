@@ -6,6 +6,14 @@ from collections import defaultdict
 from .logger import log
 
 
+def get_empty_values_from_dict(dct, empty_values=True):
+    for key, value in dct.items():
+        if empty_values and not value:
+            yield (key, value)
+        elif not empty_values and value:
+            yield (key, value)
+
+
 class HomeBrew:
 
     def __init__(self, event_loop=asyncio.get_event_loop()):
@@ -35,15 +43,11 @@ class HomeBrew:
 
     @property
     def packages_not_needed_by_other(self):
-        return dict(
-            (key, value) for key, value in self.uses.items() if not value
-        )
+        return dict(get_empty_values_from_dict(self.uses))
 
     @property
     def packages_needed_by_other(self):
-        return dict(
-            (key, value) for key, value in self.uses.items() if value
-        )
+        return dict(get_empty_values_from_dict(self.uses, empty_values=False))
 
     @property
     def package_dependencies(self):

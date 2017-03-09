@@ -1,12 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-"""
-test_homebrew
-----------------------------------
-
-Tests for `homebrew` module.
-"""
 import pytest
 
 from homebrew import homebrew
@@ -16,3 +9,16 @@ from homebrew import homebrew
 def test_homebrew(monkeypatch, caplog):
     """TODO: Write tests"""
     homebrew.HomeBrew()
+
+
+@pytest.mark.parametrize("dct, empty_values, expected", [
+    ({'a': None}, True, {'a': None}),
+    ({'a': None}, False, {}),
+    ({'a': 'Foo'}, True, {}),
+    ({'a': 'Foo'}, False, {'a': 'Foo'}),
+    ({'a': None, 'b': 'Foo', 'c': 'Bar'}, True, {'a': None}),
+    ({'a': None, 'b': 'Foo', 'c': 'Bar'}, False, {'b': 'Foo', 'c': 'Bar'}),
+])
+def test_get_empty_values_from_dict(dct, empty_values, expected):
+    assert dict(homebrew.get_empty_values_from_dict(
+        dct, empty_values)) == expected
