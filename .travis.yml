@@ -2,6 +2,7 @@
 language: python
 python:
   - "3.5"
+  - "3.6"
 before_script:
 - flake8 homebrew -v
 after_success:
@@ -9,7 +10,7 @@ after_success:
 - codecov
 deploy:
   true:
-    condition: $TOXENV == py35
+    condition: $TOXENV == py36
     repo: igroen/homebrew
     tags: true
   distributions: sdist bdist_wheel
@@ -18,7 +19,7 @@ deploy:
   provider: pypi
   user: Iwan.in.t.Groen
 env:
-- TOXENV=py35
+- TOXENV=py36
 install:
 - pip install -U tox
 - pip install -U coveralls
