@@ -89,3 +89,8 @@ History
 -------------------
 
 * Remove pytest-capturelog
+
+0.0.17 (2017-03-09)
+-------------------
+
+* Update travis configuration
