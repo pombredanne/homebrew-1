@@ -84,3 +84,8 @@ History
 -------------------
 
 * Add --version command line argument
+
+0.0.16 (2017-03-09)
+-------------------
+
+* Remove pytest-capturelog
