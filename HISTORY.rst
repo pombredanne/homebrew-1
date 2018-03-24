@@ -3,7 +3,7 @@
 Changelog
 ---------
 
-0.0.19 (2017-03-09)
+0.0.20 (2018-03-24)
 -------------------
 
-* Update HISTORY.rst
+* Don't use universal wheel for python3 only package
