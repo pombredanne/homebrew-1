@@ -1,28 +1,22 @@
+dist: xenial
 language: python
-python:
-  - "3.6"
-  
+python: 3.7
 before_script:
 - flake8 homebrew -v
-
 after_success:
 - coveralls
 - codecov
-
 deploy:
   provider: pypi
   user: Iwan.in.t.Groen
   password:
-    secure: nKWi8xiak3UwMG73BRn//Zy/5REJTP9ZZavoBzx3DFbfgmPQ/zD57w9VL5Q1Cd/qOzJ9HK1RYoaSYLFQb2DBaL9m6xI8sj+BmrJeUuopQxARpK0F2neKfFtItT5M670j6PT8K9/MsIw/Q0SEK8CuKoH29M65/4jTHMLq8SaWjpIDw3zoXCSia+s9gJVenZ+T3Pe539o/HCH55c+7nxT20DeR+c5lDy7mkI44sMIK/2ouMrr1I9gYYJqRFp3oEsWo6GynFTAHIbR5CIRNcmgeaVodMiXOo3U4ebYGcmnuPpyLu1hYuu027xU08FMvwNjSGFgw1R3lsdH1de/aG8+/f0qnpyddZYGD6u6D281TcdPRwhQOXasYH98Uu55Zu9ihK2kxf1aVFfLykXmqHcz4hPU1CsIdxj08hD9eHplvDno/UuhUAN99Z3aIjS2cw3lZksvepD6PEVoAJDilRvsL3NZ3BIl5ERYwTS9tb5IXTBNwaQjxc64FNNASeRECQaKItdztO/YdkqpbTfURNx5pVCYTSjsfK6ytCMNj/lVIn/OtY4w9Ma9tsaiVaF6zuuFcoGJzffvT3MtKxzURugSbWzWB0jUeh9PKWe8Nvyrf/a9b7BIh+Kn3hVUSKZSo2atD257DyazjTcfvtXKVuWtrWPRJ33ttm3LNwOaunWdy0xU=
+    secure: XqBzNoifH4d0edIzh8cSm130k8Sderbbg2MNlwfqLQ0u8GrgEzDWK68FMrDq80foSY+N9AWZiv5aWl72+XijwOVgondX7nxXOwEMTFrUx8Iq/MQGMoZq9WLYTnKHb66Rc3tr9m0npqw9xX4IuYUGHAZzNqfYA4AvEG1w8DfMtvAz/8kGbiu2s/bKvVED/fAXvMfLdlysVXEJSfe4HyFu5L60SqDpSfg2+cQeoGhKUnI+SCVjIsi3HRPItGei9x1tAk5lGFEZkZSos7CIZcOdzOAOB4zJkywVZoHQc9ROh2yfSr7ZVCKvOSRYDRJTchC0+vt+iKks4EiLj/GkXD2xSJbtVuFTPiDZvx88+la4qVbhkknZ2GoBVUPmWkE1blnoPv9zNkIcgMSPboFWC+SbOEToTXAuO/qz3xx2g4FpJbPIA8QupKjgOa+d2PLX8/eePco1MMnTmFeumRU7i41rjmgsdYk0f7sugNzzxv1zs2vGBm2QCJYk48/uquRVtyA7GPkZqk5l1SlUaW02+n04cN1LPZ4jzTtZm1zq9AxYgroAHIU6p/3IUy6+npmeajFYHNP2uSndS8wqhH5UIsonlvhyNVUmk3MjM1HOAIMORptztVdAnkhj5bok4RmJQRYMHikKxo4XdGVh4aBgaYg4owzw/y0M/+QtLK6964z5p1w=
   on:
-    condition: $TOXENV == py36
     repo: igroen/homebrew
-    # tags: true
+    tags: true
   distributions: sdist bdist_wheel
-  
 env:
-- TOXENV=py36
-
+- TOXENV=py37
 install:
 - pip install -U tox
 - pip install -U coveralls
@@ -30,7 +24,6 @@ install:
 - pip install -U pytest-capturelog
 - pip install -U flake8
 - pip install -U codecov
-
 script:
 - tox
 - py.test --cov=homebrew tests/
