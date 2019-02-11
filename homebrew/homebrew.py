@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import asyncio
 import subprocess
 from collections import defaultdict
@@ -15,39 +14,48 @@ def get_empty_values_from_dict(dct, empty_values=True):
 
 
 class HomeBrew:
+    _uses = {}
 
-    def __init__(self, event_loop=asyncio.get_event_loop()):
-        self.loop = event_loop
+    def __init__(self):
         self.installed = self.get_installed()
+
+    def run(self):
         self.get_uses()
+        self.log_info()
 
     def get_installed(self):
-        result = subprocess.check_output(['brew', 'list'])
+        result = subprocess.check_output(["brew", "list"])
         installed = result.split()
-        return [r.decode('utf-8') for r in installed]
+        return [r.decode("utf-8") for r in installed]
 
     def get_uses(self):
-        self.uses = {}
-        tasks = [asyncio.ensure_future(self.get_uses_for_package(package))
-                 for package in self.installed]
-        self.loop.run_until_complete(asyncio.wait(tasks))
+        tasks = [self._get_uses_for_package(package) for package in self.installed]
+        asyncio.run(asyncio.wait(tasks))
 
-    async def get_uses_for_package(self, package):
+    async def _get_uses_for_package(self, package):
         uses = await asyncio.create_subprocess_exec(
-            *['brew', 'uses', '--installed', package],
+            *["brew", "uses", "--installed", package],
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.STDOUT
         )
         stdout, _ = await uses.communicate()
-        self.uses[package] = stdout.decode('utf-8').split()
+        self._uses[package] = stdout.decode("utf-8").split()
+
+    def log_info(self):
+        log(
+            self.installed,
+            self.packages_not_needed_by_other,
+            self.packages_needed_by_other,
+            self.package_dependencies,
+        )
 
     @property
     def packages_not_needed_by_other(self):
-        return dict(get_empty_values_from_dict(self.uses))
+        return dict(get_empty_values_from_dict(self._uses))
 
     @property
     def packages_needed_by_other(self):
-        return dict(get_empty_values_from_dict(self.uses, empty_values=False))
+        return dict(get_empty_values_from_dict(self._uses, empty_values=False))
 
     @property
     def package_dependencies(self):
@@ -55,11 +63,4 @@ class HomeBrew:
         for package, needed_by in self.packages_needed_by_other.items():
             for needed in needed_by:
                 dependencies[needed].append(package)
-        return {
-            needed: sorted(packages)
-            for needed, packages in dependencies.items()
-        }
-
-    def log_info(self):
-        log(self.installed, self.packages_not_needed_by_other,
-            self.packages_needed_by_other, self.package_dependencies)
+        return {needed: sorted(packages) for needed, packages in dependencies.items()}
