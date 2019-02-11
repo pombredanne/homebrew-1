@@ -26,20 +26,20 @@ class HomeBrew:
     def get_installed(self):
         result = subprocess.check_output(["brew", "list"])
         installed = result.split()
-        return [r.decode("utf-8") for r in installed]
+        return [r.decode() for r in installed]
 
     def get_uses(self):
         tasks = [self._get_uses_for_package(package) for package in self.installed]
         asyncio.run(asyncio.wait(tasks))
 
     async def _get_uses_for_package(self, package):
-        uses = await asyncio.create_subprocess_exec(
-            *["brew", "uses", "--installed", package],
+        uses = await asyncio.create_subprocess_shell(
+            f"brew uses --installed {package}",
             stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.STDOUT
+            stderr=asyncio.subprocess.STDOUT,
         )
         stdout, _ = await uses.communicate()
-        self._uses[package] = stdout.decode("utf-8").split()
+        self._uses[package] = stdout.decode().split()
 
     def log_info(self):
         log(
