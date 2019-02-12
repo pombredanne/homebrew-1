@@ -1,8 +1,6 @@
 import argparse
 
-from homebrew import __version__
-
-from .homebrew import HomeBrew
+from homebrew import HomeBrew, __version__
 
 
 def main():
