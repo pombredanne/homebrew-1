@@ -5,14 +5,6 @@ from collections import defaultdict
 from .logger import log
 
 
-def get_empty_values_from_dict(dct, empty_values=True):
-    for key, value in dct.items():
-        if empty_values and not value:
-            yield (key, value)
-        elif not empty_values and value:
-            yield (key, value)
-
-
 class HomeBrew:
     _uses = {}
 
@@ -51,11 +43,11 @@ class HomeBrew:
 
     @property
     def packages_not_needed_by_other(self):
-        return dict(get_empty_values_from_dict(self._uses))
+        return {key: val for key, val in self._uses.items() if not val}
 
     @property
     def packages_needed_by_other(self):
-        return dict(get_empty_values_from_dict(self._uses, empty_values=False))
+        return {key: val for key, val in self._uses.items() if val}
 
     @property
     def package_dependencies(self):
