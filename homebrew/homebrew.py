@@ -9,6 +9,9 @@ class HomeBrew:
     __slots__ = ("_installed", "_uses")
 
     def __init__(self):
+        self.update()
+
+    def update(self):
         self._installed = self._get_installed()
         self._uses = {}
         self._get_uses()
