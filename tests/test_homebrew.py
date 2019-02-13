@@ -6,6 +6,6 @@ def test_homebrew_init(monkeypatch):
 
     hb = HomeBrew()
 
-    assert len(hb.installed) == 2
-    assert hb.installed[0] == "foo"
-    assert hb.installed[1] == "bar"
+    assert len(hb.installed_packages) == 2
+    assert hb.installed_packages[0] == "foo"
+    assert hb.installed_packages[1] == "bar"

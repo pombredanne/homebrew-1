@@ -8,4 +8,4 @@ def main():
     parser.add_argument("-v", "--version", action="version", version=__version__)
     parser.parse_args()
 
-    HomeBrew().run()
+    HomeBrew().info
