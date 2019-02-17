@@ -55,7 +55,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'homebrew'
-copyright = u'2015, Iwan in \'t Groen'
+copyright = u'2019, Iwan in \'t Groen'
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
