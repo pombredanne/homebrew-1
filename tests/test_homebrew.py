@@ -1,12 +1,11 @@
 from homebrew import HomeBrew
 
 
-def fake_get_uses(self):
-    return {package: ["baz"] for package in self._installed}
+def test_homebrew(monkeypatch):
+    def _fake_get_uses(self):
+        return {"foo": ["bar"], "bar": []}
 
-
-def test_homebrew_init(monkeypatch):
-    monkeypatch.setattr(HomeBrew, "_get_uses", fake_get_uses)
+    monkeypatch.setattr(HomeBrew, "_get_uses", _fake_get_uses)
     monkeypatch.setattr("subprocess.check_output", lambda popenargs: b"foo\nbar")
 
     hb = HomeBrew()
@@ -16,5 +15,10 @@ def test_homebrew_init(monkeypatch):
     assert hb.installed_packages[1] == "bar"
 
     assert len(hb._uses) == 2
-    assert hb._uses["foo"] == ["baz"]
-    assert hb._uses["bar"] == ["baz"]
+    assert hb._uses["foo"] == ["bar"]
+    assert hb._uses["bar"] == []
+
+    assert hb.packages_not_needed_by_other == {"bar": []}
+    assert hb.packages_needed_by_other == {"foo": ["bar"]}
+    assert hb.package_dependencies == {'bar': ['foo']}
+    assert hb.info is None
