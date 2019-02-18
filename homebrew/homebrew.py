@@ -13,17 +13,19 @@ class HomeBrew:
 
     def update(self):
         self._installed = self._get_installed()
-        self._uses = {}
-        self._get_uses()
+        self._uses = self._get_uses()
 
     def _get_installed(self):
         result = subprocess.check_output(["brew", "list"])
         installed = result.split()
+
         return [r.decode() for r in installed]
 
     def _get_uses(self):
         tasks = [self._get_uses_for_package(package) for package in self._installed]
-        asyncio.run(asyncio.wait(tasks))
+        tasks_result, _ = asyncio.run(asyncio.wait(tasks))
+
+        return dict(task_result.result() for task_result in tasks_result)
 
     async def _get_uses_for_package(self, package):
         uses = await asyncio.create_subprocess_shell(
@@ -32,7 +34,8 @@ class HomeBrew:
             stderr=asyncio.subprocess.STDOUT,
         )
         stdout, _ = await uses.communicate()
-        self._uses[package] = stdout.decode().split()
+
+        return package, stdout.decode().split()
 
     @property
     def installed_packages(self):
@@ -52,6 +55,7 @@ class HomeBrew:
         for package, needed_by in self.packages_needed_by_other.items():
             for needed in needed_by:
                 dependencies[needed].append(package)
+
         return {needed: sorted(packages) for needed, packages in dependencies.items()}
 
     @property

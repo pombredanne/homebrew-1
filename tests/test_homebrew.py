@@ -2,8 +2,7 @@ from homebrew import HomeBrew
 
 
 def fake_get_uses(self):
-    for package in self._installed:
-        self._uses[package] = ["baz"]
+    return {package: ["baz"] for package in self._installed}
 
 
 def test_homebrew_init(monkeypatch):
