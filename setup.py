@@ -41,7 +41,7 @@ class PyTest(TestCommand):
 
 setup(
     name="homebrew",
-    version="0.0.28",
+    version="0.0.29",
     description="Homebrew wrapper",
     long_description=readme + "\n\n" + history,
     author="Iwan in 't Groen",
