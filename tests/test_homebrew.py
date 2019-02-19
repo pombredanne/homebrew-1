@@ -1,12 +1,26 @@
 from homebrew import HomeBrew
 
 
-def test_homebrew(monkeypatch, caplog):
-    def _fake_get_uses(self):
-        return {"foo": ["bar"], "bar": []}
+class MockTask:
+    def __init__(self, package, uses):
+        self.package = package
+        self.uses = uses
 
-    monkeypatch.setattr(HomeBrew, "_get_uses", _fake_get_uses)
+    def result(self):
+        return self.package, self.uses
+
+
+def _fake_asyncio_run(coro):
+    return {MockTask("foo", ["bar"]), MockTask("bar", [])}, None
+
+
+def test_homebrew(monkeypatch, caplog):
     monkeypatch.setattr("subprocess.check_output", lambda popenargs: b"foo\nbar")
+
+    # Monkeypatch async functions
+    monkeypatch.setattr(HomeBrew, "_get_uses_for_package", lambda self_, package: [])
+    monkeypatch.setattr("asyncio.wait", lambda tasks: None)
+    monkeypatch.setattr("asyncio.run", _fake_asyncio_run)
 
     hb = HomeBrew()
 
