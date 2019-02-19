@@ -2,10 +2,10 @@ import logging
 import sys
 
 logger = logging.getLogger()
-logFormatter = logging.Formatter("%(message)s")
-consoleHandler = logging.StreamHandler(sys.stdout)
-consoleHandler.setFormatter(logFormatter)
-logger.addHandler(consoleHandler)
+formatter = logging.Formatter("%(message)s")
+handler = logging.StreamHandler(sys.stdout)
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
 UNDERLINE_SYMBOL = "-"
