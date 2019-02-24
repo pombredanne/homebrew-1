@@ -14,7 +14,6 @@ Contents:
    readme
    installation
    usage
-   history
 
 Indices and tables
 ==================
