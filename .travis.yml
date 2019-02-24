@@ -18,11 +18,12 @@ deploy:
 env:
 - TOXENV=py37
 install:
-- pip install -U tox
-- pip install -U coveralls
-- pip install -U pytest-cov
-- pip install -U flake8
 - pip install -U codecov
+- pip install -U coveralls
+- pip install -U flake8
+- pip install -U pytest-cov
+- pip install -U tox
+- pip install -e .
 script:
 - tox
-- py.test --cov=homebrew tests/
+- pytest --cov=homebrew

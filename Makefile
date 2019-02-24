@@ -56,7 +56,7 @@ test-all:
 	tox
 
 coverage:
-	py.test --cov=homebrew --cov-report html tests/
+	pytest --cov=homebrew --cov-report html
 	$(BROWSER) htmlcov/index.html
 
 docs:
