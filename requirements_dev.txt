@@ -1,3 +1,5 @@
 bumpversion
 sphinx
 tox
+twine
+watchdog
