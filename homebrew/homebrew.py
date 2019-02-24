@@ -43,7 +43,7 @@ class HomeBrew:
 
     @property
     def packages_not_needed_by_other(self):
-        return {key: val for key, val in self._uses.items() if not val}
+        return [key for key, val in self._uses.items() if not val]
 
     @property
     def packages_needed_by_other(self):

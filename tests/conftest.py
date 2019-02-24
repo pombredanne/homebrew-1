@@ -26,3 +26,25 @@ def mock_async(monkeypatch):
 @pytest.fixture(autouse=True)
 def mock_check_output(monkeypatch):
     monkeypatch.setattr("subprocess.check_output", lambda popenargs: b"foo\nbar")
+
+
+@pytest.fixture
+def expected_log_output():
+    return [
+        "Installed packages:",
+        "-------------------",
+        "bar, foo",
+        "",
+        "No package depends on these packages:",
+        "-------------------------------------",
+        "bar",
+        "",
+        "These packages are needed by other packages:",
+        "--------------------------------------------",
+        "Package foo is needed by: bar",
+        "",
+        "These packages depend on other packages:",
+        "----------------------------------------",
+        "Package bar depends on: foo",
+        "",
+    ]
