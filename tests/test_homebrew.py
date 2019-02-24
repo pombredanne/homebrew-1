@@ -1,7 +1,7 @@
 from homebrew import HomeBrew
 
 
-def test_homebrew(monkeypatch, caplog):
+def test_homebrew(caplog):
     hb = HomeBrew()
 
     assert len(hb.installed_packages) == 2

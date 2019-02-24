@@ -4,7 +4,7 @@ from homebrew import __version__
 from homebrew.command_line import parse_args
 
 
-def test_parse_args(monkeypatch, capsys):
+def test_parse_args(capsys):
     with pytest.raises(SystemExit):
         parse_args(["--version"])
 
