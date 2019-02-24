@@ -2,17 +2,17 @@
 Usage
 ========
 
-To use homebrew in a project::
+::
 
     >>> from homebrew import HomeBrew
-    >>> b = HomeBrew()
-    >>> b.packages_not_needed_by_other
-    {'node': [], 'python': [], 'tree': [], 'gettext': [], 'emacs': [], 'gnupg': [], 'git-flow': [], 'python3': []}
-    >>> b.packages_needed_by_other
+    >>> hb = HomeBrew()
+    >>> hb.packages_not_needed_by_other
+    ['node', 'python', 'tree', 'gettext', 'emacs', 'gnupg', 'git-flow', 'python3']
+    >>> hb.packages_needed_by_other
     {'sqlite': ['python', 'python3'], 'openssl': ['node', 'python', 'python3'], 'xz': ['emacs', 'gettext', 'python3'], 'readline': ['python', 'python3', 'sqlite'], 'gdbm': ['python', 'python3'], 'pkg-config': ['emacs', 'node', 'python', 'python3']}
-    >>> b.package_dependencies
+    >>> hb.package_dependencies
     {'node': ['openssl', 'pkg-config'], 'sqlite': ['readline'], 'python': ['sqlite', 'openssl', 'readline', 'gdbm', 'pkg-config'], 'gettext': ['xz'], 'emacs': ['xz', 'pkg-config'], 'python3': ['sqlite', 'openssl', 'xz', 'readline', 'gdbm', 'pkg-config']}
-    >>> b.info
+    >>> hb.info
     Installed packages:
     -------------------
     emacs, gdbm, gettext, git-flow, gnupg, node, openssl, pkg-config, python, python3, readline, sqlite, tree, xz

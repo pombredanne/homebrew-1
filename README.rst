@@ -1,6 +1,5 @@
-===============================
 homebrew
-===============================
+========
 
 .. image:: https://img.shields.io/pypi/v/homebrew.svg
         :target: https://pypi.python.org/pypi/homebrew
@@ -31,14 +30,3 @@ Features
 --------
 
 * Get overview of homebrew package dependencies
-
-Credits
----------
-
-Tools used in rendering this package:
-
-*  Cookiecutter_
-*  `cookiecutter-pypackage`_
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
