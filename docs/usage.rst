@@ -1,8 +1,40 @@
-========
 Usage
-========
+=====
 
-::
+Command line:
+
+.. code-block:: bash
+
+    $ hb
+    Installed packages:
+    -------------------
+    emacs, gdbm, gettext, git-flow, gnupg, node, openssl, pkg-config, python, python3, readline, sqlite, tree, xz
+
+    No package depends on these packages:
+    -------------------------------------
+    emacs, gettext, git-flow, gnupg, node, python, python3, tree
+
+    These packages are needed by other packages:
+    --------------------------------------------
+    Package gdbm is needed by: python, python3
+    Package openssl is needed by: node, python, python3
+    Package pkg-config is needed by: emacs, node, python, python3
+    Package readline is needed by: python, python3, sqlite
+    Package sqlite is needed by: python, python3
+    Package xz is needed by: emacs, gettext, python3
+
+    These packages depend on other packages:
+    ----------------------------------------
+    Package emacs depends on: xz, pkg-config
+    Package gettext depends on: xz
+    Package node depends on: openssl, pkg-config
+    Package python depends on: sqlite, openssl, readline, gdbm, pkg-config
+    Package python3 depends on: sqlite, openssl, xz, readline, gdbm, pkg-config
+    Package sqlite depends on: readline
+
+Python interpreter:
+
+.. code-block:: python
 
     >>> from homebrew import HomeBrew
     >>> hb = HomeBrew()
