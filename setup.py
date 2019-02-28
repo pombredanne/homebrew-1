@@ -5,7 +5,7 @@ with open("README.rst") as readme_file:
 
 setup(
     name="homebrew",
-    version="0.1.3",
+    version="0.1.4",
     description="Homebrew wrapper",
     long_description=readme,
     author="Iwan in 't Groen",
