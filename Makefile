@@ -47,7 +47,7 @@ clean-test:
 	rm -fr htmlcov/
 
 lint:
-	flake8 homebrew tests
+	flake8 homebrew
 
 test:
 	python setup.py test
