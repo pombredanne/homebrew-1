@@ -2,6 +2,7 @@ import asyncio
 import subprocess
 from collections import defaultdict
 
+from .caching import uses_cache
 from .logger import log
 
 
@@ -21,6 +22,7 @@ class HomeBrew:
 
         return [r.decode() for r in installed]
 
+    @uses_cache
     def _get_uses(self):
         tasks = [self._get_uses_for_package(package) for package in self._installed]
         tasks_result, _ = asyncio.run(asyncio.wait(tasks))

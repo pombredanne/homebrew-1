@@ -1,3 +1,5 @@
+from contextlib import contextmanager
+
 import pytest
 
 from homebrew import HomeBrew
@@ -14,6 +16,18 @@ class MockTask:
 
 def _fake_asyncio_run(coro):
     return {MockTask("foo", ["bar"]), MockTask("bar", [])}, None
+
+
+@contextmanager
+def mock_open(file, mode):
+    yield None
+
+
+@pytest.fixture(autouse=True)
+def mock_cache(monkeypatch):
+    monkeypatch.setattr("builtins.open", mock_open)
+    monkeypatch.setattr("json.load", lambda file: [])
+    monkeypatch.setattr("json.dump", lambda data, file: None)
 
 
 @pytest.fixture(autouse=True)
