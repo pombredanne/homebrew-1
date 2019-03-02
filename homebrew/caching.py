@@ -8,8 +8,8 @@ CACHE_DIR = os.path.join(
 
 
 class UsesCache:
-    _installed_path = os.path.join(CACHE_DIR, "installed")
-    _uses_path = os.path.join(CACHE_DIR, "uses")
+    _installed_path = os.path.join(CACHE_DIR, "installed.json")
+    _uses_path = os.path.join(CACHE_DIR, "uses.json")
 
     def read_installed(self):
         try:
