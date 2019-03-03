@@ -26,7 +26,7 @@ def mock_open(file, mode):
 @pytest.fixture(autouse=True)
 def mock_cache(monkeypatch):
     monkeypatch.setattr("builtins.open", mock_open)
-    monkeypatch.setattr("json.load", lambda file: [])
+    monkeypatch.setattr("json.load", lambda file: None)
     monkeypatch.setattr("json.dump", lambda data, file: None)
 
 

@@ -2,7 +2,7 @@ import asyncio
 import subprocess
 from collections import defaultdict
 
-from .caching import uses_cache
+from .cache import uses_cache
 from .logger import log
 
 
