@@ -15,8 +15,6 @@ Indices and tables
 
 .. toctree::
 
-   modules
-
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`

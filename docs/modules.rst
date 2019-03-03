@@ -1,3 +1,6 @@
+homebrew
+========
+
 .. toctree::
    :maxdepth: 4
 

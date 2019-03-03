@@ -4,6 +4,14 @@ homebrew package
 Submodules
 ----------
 
+homebrew.cache module
+---------------------
+
+.. automodule:: homebrew.cache
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 homebrew.command\_line module
 -----------------------------
 
