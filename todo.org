@@ -1,6 +1,0 @@
-* Add cache [2/3]
-** DONE Check if installed packages has changed
-   CLOSED: [2019-03-01 Fri 23:11]
-** DONE Update if there are changes
-   CLOSED: [2019-03-01 Fri 23:11]
-** TODO Improve by only updating changes in installed packages
