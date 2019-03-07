@@ -1,0 +1,12 @@
+autopep8
+black
+bumpversion
+flake8
+isort
+jedi
+rope
+sphinx
+tox
+twine
+watchdog
+yapf
